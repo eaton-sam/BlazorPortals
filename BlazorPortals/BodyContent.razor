@@ -1,0 +1,7 @@
+﻿<PortalContent PortalName="body">
+    @ChildContent
+</PortalContent>
+
+@code {
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = default!;
+}
