@@ -1,4 +1,4 @@
-using BlazorPortals.Wasm;
+using BlazorPortals.Example.Wasm;
 using BlazorPortals;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
