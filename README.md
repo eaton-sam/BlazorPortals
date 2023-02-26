@@ -4,24 +4,54 @@ Blazor component library for rendering components outside of their normal hierar
 BlazorPortals can be placed anywhere in the DOM, including outside of the root app component, such as the end of the body.
 
 ## General Usage
+<details>
+  <summary>Click to expand</summary>
 
 Register the services using the extension:
 ```csharp
 builder.Services.AddPortals();
 ```
+Place a portal wherever you want to be able to render components, for example in the page header:
 
-Place a portal wherever you want to be able to render components, for example the end of your Layout component.
 ```razor
-<Portal Name="layout" />
+@* MainLayout.razor *@
+@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <Portal Name="header"/>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
 ```
 
 Use a `PortalContent` component to render into the portal:
-```razor
-<PortalContent PortalName="layout">
-    <div>This will be rendered in the portal</div>
-</PortalContent>
-```
 
+```razor
+@* Index.razor *@
+@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<PortalContent PortalName="header">
+    <div>This will be in the header</div>
+</PortalContent>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+```
+</details>
+    
 ## Rendering outside of the app root
 ### Blazor WASM
 todo
