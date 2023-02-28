@@ -1,0 +1,43 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<p>Some content to make the page scroll</p>
+
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+<p>Some content to make the page scroll</p>
+
+<button @ref="_buttonRef" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
+
+
+<Popper AnchorRef="_buttonRef" @bind-Open="_isOpen" Placement="bottom" AutoClose>
+    <Content>
+        <div style="padding: 5px 10px; border: 1px solid rgba(0,0,0, 0.2); border-radius: 6px; background-color: #fff;">
+            Popover content!!!
+        </div>
+    </Content>
+</Popper>
+
+
+@code {
+    private bool _isOpen;
+    private ElementReference _buttonRef;
+
+    protected override void OnInitialized()
+    {
+    }
+}

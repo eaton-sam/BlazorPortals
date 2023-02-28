@@ -1,0 +1,63 @@
+﻿@inject IJSRuntime JSRuntime
+
+@if (Anchor is not null)
+{
+    <span @ref="AnchorRef">
+        @Anchor
+    </span>
+}
+
+@if(Open)
+{
+    <BodyContent>
+        <span style="padding: 5px" @ref="_contentRef">
+            @Content
+        </span>
+    </BodyContent>
+}
+
+
+@code {
+    [Parameter] public RenderFragment? Anchor { get; set; }
+    [Parameter] public ElementReference? AnchorRef { get; set; }
+    [Parameter, EditorRequired] public RenderFragment Content { get; set; } = default!;
+    [Parameter] public string? Placement { get; set; }
+    [Parameter] public bool AutoClose { get; set; }
+
+    [Parameter] public bool Open { get; set; }
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+    private bool _wasOpen;
+
+    private ElementReference? _contentRef;
+    private ElementReference? _previousAnchor;
+
+    private IJSObjectReference? _module;
+    private DotNetObjectReference<Popper>? _objRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _objRef = DotNetObjectReference.Create(this);
+        _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", 
+                "./index.js");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(Open && !_wasOpen)
+        {
+            await _module!.InvokeVoidAsync("createPopper", AnchorRef, _contentRef, new { placement = Placement }, AutoClose, _objRef);
+            //await JSRuntime.InvokeVoidAsync("Popper.createPopper", AnchorRef, _contentRef, new { placement = Placement });
+        }
+
+        _wasOpen = Open;
+        _previousAnchor = AnchorRef;
+    }
+
+    [JSInvokable]
+    public async Task HidePopper()
+    {
+        Open = false;
+        await OpenChanged.InvokeAsync(Open);
+        StateHasChanged();
+    }
+}
