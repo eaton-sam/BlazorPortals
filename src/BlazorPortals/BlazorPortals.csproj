@@ -4,6 +4,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+	<PackageId>BlazorPortals</PackageId>
+	<Version>0.1.0</Version>
+	<Authors>Sam Eaton</Authors>
+	<PackageDescription>Portals for Blazor. Render components outside of their hierarchy.</PackageDescription>
+	<PackageProjectUrl>https://github.com/eaton-sam/BlazorPortals</PackageProjectUrl>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageTags>blazor</PackageTags>
+	<RepositoryUrl>https://github.com/eaton-sam/BlazorPortals</RepositoryUrl>
   </PropertyGroup>
 
 

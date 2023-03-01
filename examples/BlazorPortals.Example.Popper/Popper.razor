@@ -9,11 +9,11 @@
 
 @if(Open)
 {
-    <BodyContent>
+    <BodyPortal>
         <span style="padding: 5px" @ref="_contentRef">
             @Content
         </span>
-    </BodyContent>
+    </BodyPortal>
 }
 
 
@@ -46,7 +46,6 @@
         if(Open && !_wasOpen)
         {
             await _module!.InvokeVoidAsync("createPopper", AnchorRef, _contentRef, new { placement = Placement }, AutoClose, _objRef);
-            //await JSRuntime.InvokeVoidAsync("Popper.createPopper", AnchorRef, _contentRef, new { placement = Placement });
         }
 
         _wasOpen = Open;
