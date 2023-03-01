@@ -65,7 +65,7 @@ The project contains a `BodyPortal` component, which is simply the following:
 ```
 
 ### Blazor WASM
-Add your portal component to the RootComponents collection of the WebAssemblyHostBuilder in Program.cs:
+Add your portal component to the RootComponents collection of the WebAssemblyHostBuilder in Program.cs, specifying a selector for its location in the DOM.
 ```csharp
 builder.RootComponents.Add<BodyOutlet>("body::after");
 ```
