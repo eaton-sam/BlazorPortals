@@ -11,7 +11,7 @@ Register the services using the extension:
 ```csharp
 builder.Services.AddPortals();
 ```
-Place a portal wherever you want to be able to render components, for example in the page header:
+Place a `PortalOutlet` wherever you want to be able to render components, for example in the page header:
 
 ```razor
 @* MainLayout.razor *@
@@ -24,7 +24,7 @@ Place a portal wherever you want to be able to render components, for example in
 
     <main>
         <div class="top-row px-4">
-            <Portal Name="header"/>
+            <PortalOutlet Name="header"/>
         </div>
 
         <article class="content px-4">
@@ -34,7 +34,7 @@ Place a portal wherever you want to be able to render components, for example in
 </div>
 ```
 
-Use a `PortalContent` component to render into the portal:
+Use a `Portal` component to render into the `PortalOutlet`:
 
 ```razor
 @* Index.razor *@
@@ -42,9 +42,9 @@ Use a `PortalContent` component to render into the portal:
 
 <PageTitle>Index</PageTitle>
 
-<PortalContent PortalName="header">
+<Portal Name="header">
     <div>This will be in the header</div>
-</PortalContent>
+</Portal>
 
 <h1>Hello, world!</h1>
 
@@ -61,13 +61,13 @@ Portals can be used to render components outside of the root app component hiera
 In order to render outside of the root app component, you need a parameterless component.
 The project contains a `BodyPortal` component, which is simply the following:
 ```razor
-<Portal Name="body" />
+<PortalOutlet Name="body" />
 ```
 
 ### Blazor WASM
-Add your portal component to the RootComponents collection of the WebAssemblyHostBuilder in Program.cs:
+Add your portal component to the RootComponents collection of the WebAssemblyHostBuilder in Program.cs, specifying a selector for its location in the DOM.
 ```csharp
-builder.RootComponents.Add<BodyPortal>("body::after");
+builder.RootComponents.Add<BodyOutlet>("body::after");
 ```
 From the headoutlet documentation:
 > When the ::after pseudo-selector is specified, the contents of the root component are appended to the existing head contents instead of replacing the content. This allows the app to retain static head content in wwwroot/index.html without having to repeat the content in the app's Razor components.
@@ -76,7 +76,7 @@ From the headoutlet documentation:
 Add your portal component to the \_Host.cshtml
 ```razor
 ...
-<component type="typeof(BodyPortal)" render-mode="ServerPrerendered" />
+<component type="typeof(BodyOutlet)" render-mode="ServerPrerendered" />
 </body>
 </html>
 ```
