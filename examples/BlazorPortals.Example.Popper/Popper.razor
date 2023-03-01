@@ -7,10 +7,10 @@
     </span>
 }
 
-@if(Open)
+@if (Open)
 {
     <BodyPortal>
-        <span style="padding: 5px" @ref="_contentRef">
+        <span @ref="_contentRef">
             @Content
         </span>
     </BodyPortal>
@@ -21,35 +21,39 @@
     [Parameter] public RenderFragment? Anchor { get; set; }
     [Parameter] public ElementReference? AnchorRef { get; set; }
     [Parameter, EditorRequired] public RenderFragment Content { get; set; } = default!;
-    [Parameter] public string? Placement { get; set; }
     [Parameter] public bool AutoClose { get; set; }
 
     [Parameter] public bool Open { get; set; }
     [Parameter] public EventCallback<bool> OpenChanged { get; set; }
     private bool _wasOpen;
 
+    [Parameter] public string? Placement { get; set; }
+    private string? _previousPlacement;
+
     private ElementReference? _contentRef;
-    private ElementReference? _previousAnchor;
 
     private IJSObjectReference? _module;
     private DotNetObjectReference<Popper>? _objRef;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         _objRef = DotNetObjectReference.Create(this);
-        _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", 
-                "./index.js");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(Open && !_wasOpen)
+        if(firstRender)
+        {
+            _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./index.js");
+        }
+
+        if (Open && !_wasOpen)
         {
             await _module!.InvokeVoidAsync("createPopper", AnchorRef, _contentRef, new { placement = Placement }, AutoClose, _objRef);
         }
 
         _wasOpen = Open;
-        _previousAnchor = AnchorRef;
+        _previousPlacement = Placement;
     }
 
     [JSInvokable]

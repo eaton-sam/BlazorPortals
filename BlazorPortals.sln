@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPortals.Example.Serve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{689B8938-B8A5-40D7-A8D6-46135ACB2693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorPortals.Example.Popper", "examples\BlazorPortals.Example.Popper\BlazorPortals.Example.Popper.csproj", "{8A1932BF-1770-4A68-851A-90A6F0829F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPortals.Example.Popper", "examples\BlazorPortals.Example.Popper\BlazorPortals.Example.Popper.csproj", "{8A1932BF-1770-4A68-851A-90A6F0829F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,16 +21,103 @@ Welcome to your new app.
 <p>Some content to make the page scroll</p>
 <p>Some content to make the page scroll</p>
 
-<button @ref="_buttonRef" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
+<button class="btn btn-primary" @ref="_buttonRef" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
 
-
-<Popper AnchorRef="_buttonRef" @bind-Open="_isOpen" Placement="bottom" AutoClose>
+<Popper AnchorRef="_buttonRef" @bind-Open="_isOpen" Placement="top" AutoClose>
     <Content>
-        <div style="padding: 5px 10px; border: 1px solid rgba(0,0,0, 0.2); border-radius: 6px; background-color: #fff;">
-            Popover content!!!
+        <div id="tooltip">
+            Autoclosing popover
+            <div id="arrow" data-popper-arrow></div>
         </div>
     </Content>
 </Popper>
+
+
+<div class="pt-5 d-flex flex-row gap-5">
+    <Popper Open Placement="top">
+        <Anchor>
+            <button class="btn btn-primary">Testing Popper</button>
+        </Anchor>
+        <Content>
+            <div id="tooltip">
+                Popover top
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </Content>
+    </Popper>
+
+    <Popper Open Placement="left">
+        <Anchor>
+            <button class="btn btn-primary">Testing Popper</button>
+        </Anchor>
+        <Content>
+            <div id="tooltip">
+                Popover left
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </Content>
+    </Popper>
+
+    <Popper Open Placement="bottom">
+        <Anchor>
+            <button class="btn btn-primary">Testing Popper</button>
+        </Anchor>
+        <Content>
+            <div id="tooltip">
+                Popover bottom
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </Content>
+    </Popper>
+
+    <Popper Open Placement="right">
+        <Anchor>
+            <button class="btn btn-primary">Testing Popper</button>
+        </Anchor>
+        <Content>
+            <div id="tooltip">
+                Popover right
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </Content>
+    </Popper>
+</div>
+
+@*<Popper @bind-Open="_isOpen">
+    <Anchor>
+        <button class="btn btn-primary" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
+    </Anchor>
+    <Content>
+        <div id="tooltip">
+            Popover left
+            <div id="arrow" data-popper-arrow></div>
+        </div>
+    </Content>
+</Popper>
+
+<Popper @bind-Open="_isOpen">
+    <Anchor>
+        <button class="btn btn-primary" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
+    </Anchor>
+    <Content>
+        <div id="tooltip">
+            Popover bottom
+            <div id="arrow" data-popper-arrow></div>
+        </div>
+    </Content>
+</Popper>
+
+<Popper >
+    <Anchor>
+        <button class="btn btn-primary" @onclick="() => _isOpen = !_isOpen">Testing Popper</button>
+    </Anchor>
+    <Content>
+        <div id="tooltip">
+            Popover right
+            <div id="arrow" data-popper-arrow></div>
+        </div>
+    </Content>
+</Popper>*@
 
 
 @code {
