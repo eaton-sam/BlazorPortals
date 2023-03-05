@@ -2,9 +2,11 @@
 
 <PageTitle>Index</PageTitle>
 
-<BodyPortal>
-    <div>This should be at the end of the body</div>
-</BodyPortal>
+<CascadingValue Value=cascadedValue>
+    <BodyPortal>
+        <ComponentInPortal />
+    </BodyPortal>
+</CascadingValue>
 
 <Portal Name="header">
     <div>This should be in the header</div>
@@ -15,3 +17,7 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+    private CascadeTesting cascadedValue = new CascadeTesting("Testing");
+}
