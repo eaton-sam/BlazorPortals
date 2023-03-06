@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+.idea/.idea.BlazorPortals/.idea/projectSettingsUpdater.xml
+.idea/.idea.BlazorPortals/.idea/workspace.xml
