@@ -12,9 +12,13 @@
 	<PackageProjectUrl>https://github.com/eaton-sam/BlazorPortals</PackageProjectUrl>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageTags>blazor</PackageTags>
+  <PackageReadmeFile>README.md</PackageReadmeFile>
 	<RepositoryUrl>https://github.com/eaton-sam/BlazorPortals</RepositoryUrl>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
