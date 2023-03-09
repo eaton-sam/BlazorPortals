@@ -3,6 +3,11 @@
 Blazor component library for rendering components outside of their normal hierarchy. Known in React as 'Portals', sometimes also called 'Outlets'.
 BlazorPortals can be placed anywhere in the DOM, including outside of the root app component, such as the end of the body or the head. This library works in a similar way to the [built-in components for rendering head content](https://learn.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content?view=aspnetcore-7.0).
 
+______
+
+[NuGet](https://www.nuget.org/packages/BlazorPortals/)
+> dotnet add package BlazorPortals
+
 ## General Usage
 <details>
   <summary>Click to expand</summary>
